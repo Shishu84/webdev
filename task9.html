@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Div-Based Webpage</title>
+  <style>
+    
+
+    body {
+      background: linear-gradient(to right, #dfe9f3, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .main-body {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: #e19999;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-inline: 20px;
+      padding-top: 10px;
+    }
+
+    .box {
+      background: rgb(179, 96, 96);
+      padding: 25px;
+      border-radius: 15px;
+      width: 180px;
+      box-shadow: 0 6px 12px rgba(244, 241, 241, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      
+    }
+
+    
+
+    .box img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover img {
+      transform: scale(1.1);
+    }
+
+    .box h2 {
+      font-size: 1.3em;
+      color:rgb(4, 0, 10);
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-body {
+        padding: 50px;
+        width: 1000px;
+      }
+    }
+  </style>
+</head>
+<body>
+ <div style="background-color:rgb(255, 255, 255);margin:20px;height: 1000px;">
+  <div class="main-body">
+    <div class="container">
+      <div class="box">
+        <img src="https://img.icons8.com/ios-filled/100/home.png" alt="Home Logo">
+        <h2>Home</h2>
+      </div>
+      <div class="box">
+        <img src="https://img.icons8.com/ios-filled/100/about.png" alt="About Logo">
+        <h2>About</h2>
+      </div>
+      <div class="box">
+        <img src="https://img.icons8.com/ios-filled/100/gallery.png" alt="Gallery Logo">
+        <h2>Gallery</h2>
+      </div>
+      <div class="box">
+        <img src="https://img.icons8.com/ios-filled/100/contact-card.png" alt="Contact Logo">
+        <h2>Contact</h2>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
