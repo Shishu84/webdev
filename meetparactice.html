@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .form
+      {margin-bottom: 10px;
+font-size: 16px;
+color: #a53333;
+text-align: center;
+display: flex;
+  justify-content: normal;
+  align-items: center;
+  background: #8599ad;
+  color: rgb(4, 0, 0);
+  padding: 15px 30px;
+  flex-wrap: wrap;}
+
+       #div1{
+        padding: 15px 30px;
+  flex-wrap: wrap;
+  display: flex;
+  background-color: bisque;
+  content-visibility: visible;
+       }
+       #div2{
+        display: flex;
+  background-color: rgb(178, 113, 34);
+  height: auto;
+  width: 500px;
+       }
+    </style>
+</head>
+<body>
+ <div id="div1">
+    <h1 id="Heading">
+    Hey's Dear Welcom to This page
+   </h1> 
+   </div>
+   <div id="div2">
+   <form onsubmit="Formsubmit();" class="form">
+  <input type"text" id="name" placeholder="User Name" >
+  <input type="email" id="mail" placeholder="enter your email id">
+  <input type="submit" name="submit">
+   </form>
+   </div>
+
+   
+   <script>
+    function ChangeColor (){
+   var content ="this is js changed text hai aao join kro "
+
+
+    }
+    function ChangeField(){
+
+        var x=document.getElementById("name");
+        x.tyle.backgroundcolor="blue";
+
+    }
+    function Formsubmit(){
+        alert=("form successfully submitted")
+    }
+    function countdown(){
+        var x=document.getElementById("countdown").innerHTML;
+       var y=x-1;
+        x.innerHTML=y;
+   alert
+    }
+    setInterval(countdown,1000)
+   </script>
+</body>
+</html>
