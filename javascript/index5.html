@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript: Exception Handling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #673ab7;
+      --secondary: #ff9800;
+      --error: #f44336;
+      --success: #4caf50;
+      --bg: #f4f4f9;
+      --card-bg: #fff;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    section {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--primary);
+    }
+
+    input {
+      padding: 6px;
+      margin: 5px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .result {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 6px;
+      background-color: #eee;
+      white-space: pre-wrap;
+    }
+
+    .error {
+      background-color: #fdecea;
+      border-left: 4px solid var(--error);
+      color: var(--error);
+    }
+
+    .success {
+      background-color: #e8f5e9;
+      border-left: 4px solid var(--success);
+      color: var(--success);
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>✨ JavaScript: Exception Handling ✨</header>
+
+  <main>
+
+    <!-- Task 1 -->
+    <section>
+      <h2>1️⃣ Handle Undeclared Variable Error</h2>
+      <button onclick="handleUndeclared()">Try It</button>
+      <div id="result1" class="result"></div>
+    </section>
+
+    <!-- Task 2 -->
+    <section>
+      <h2>2️⃣ Throw "Divide by Zero" Error</h2>
+      <input type="number" id="num1" placeholder="Enter numerator">
+      <input type="number" id="num2" placeholder="Enter denominator">
+      <button onclick="divideNumbers()">Divide</button>
+      <div id="result2" class="result"></div>
+    </section>
+
+    <!-- Task 3 -->
+    <section>
+      <h2>3️⃣ Throw "Out of Bound Error"</h2>
+      <input type="number" id="indexInput" placeholder="Array index to access">
+      <button onclick="checkArrayIndex()">Check Index</button>
+      <div id="result3" class="result"></div>
+    </section>
+
+    <!-- Task 4 -->
+    <section>
+      <h2>4️⃣ Exception Handling with Finally</h2>
+      <button onclick="useFinally()">Run Example</button>
+      <div id="result4" class="result"></div>
+    </section>
+
+  </main>
+
+  <script>
+    function handleUndeclared() {
+      const result = document.getElementById('result1');
+      try {
+        result.textContent = myUndeclaredVar;
+      } catch (error) {
+        result.className = 'result error';
+        result.textContent = "❌ Caught Error: " + error.message;
+      }
+    }
+
+    function divideNumbers() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const result = document.getElementById('result2');
+      try {
+        if (num2 === 0) {
+          throw new Error("Divide by Zero Error");
+        }
+        const quotient = num1 / num2;
+        result.className = 'result success';
+        result.textContent = `✅ Result: ${quotient}`;
+      } catch (error) {
+        result.className = 'result error';
+        result.textContent = "❌ " + error.message;
+      }
+    }
+
+    function checkArrayIndex() {
+      const arr = [10, 20, 30, 40, 50];
+      const index = parseInt(document.getElementById('indexInput').value);
+      const result = document.getElementById('result3');
+      try {
+        if (index < 0 || index >= arr.length) {
+          throw new Error("Out of Bound Error");
+        }
+        result.className = 'result success';
+        result.textContent = `✅ Value at index ${index}: ${arr[index]}`;
+      } catch (error) {
+        result.className = 'result error';
+        result.textContent = "❌ " + error.message;
+      }
+    }
+
+    function useFinally() {
+      const result = document.getElementById('result4');
+      let message = "";
+      try {
+        message = "✅ Try block executed successfully.";
+        result.className = 'result success';
+      } catch (error) {
+        message = "❌ Error: " + error.message;
+        result.className = 'result error';
+      } finally {
+        message += "\n✨ Finally block always runs!";
+        result.textContent = message;
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript: Conditional, Loops, Functions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6200ea;
+      --secondary: #03dac6;
+      --accent: #f107a3;
+      --background: #f5f5f5;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --shadow: rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --background: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --shadow: rgba(255,255,255,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--background);
+      color: var(--text-color);
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-family: 'Pacifico', cursive;
+      position: relative;
+    }
+
+    header button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    header button:hover {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    section {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px var(--shadow);
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .task-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .right {
+      flex: 1;
+      min-width: 200px;
+      text-align: right;
+      padding: 10px;
+      font-style: italic;
+      color: var(--secondary);
+    }
+
+    input.user-input {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    button.action-btn {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    button.action-btn:hover {
+      background-color: var(--secondary);
+      color: #000;
+    }
+
+    .result {
+      margin-top: 10px;
+      padding: 12px;
+      background-color: var(--background);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      transition: background-color 0.4s;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+  <header>
+    ✨ JavaScript: Conditional, Loops, Functions
+    <button onclick="toggleDarkMode()">🌓 Dark Mode</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>14️⃣ Practice Tasks</h2>
+
+      <!-- Task 1 -->
+      <div class="task-flex">
+        <div class="left">
+          <h3>1️⃣ Filter Negative Numbers</h3>
+          <input class="user-input" type="text" id="filterInput" placeholder="e.g. 1, -2, 3, -4, 5">
+          <button class="action-btn" onclick="filterNegatives()">Filter</button>
+          <div class="result" id="filterResult"></div>
+        </div>
+        <div class="right">💡 This work is good for mind!</div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="task-flex">
+        <div class="left">
+          <h3>2️⃣ Difference with 13</h3>
+          <input class="user-input" type="number" id="diffInput" placeholder="Enter a number">
+          <button class="action-btn" onclick="diffWith13()">Calculate</button>
+          <div class="result" id="diffResult"></div>
+        </div>
+        <div class="right">💡 Practice makes perfect!</div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="task-flex">
+        <div class="left">
+          <h3>3️⃣ Fibonacci Series</h3>
+          <input class="user-input" type="number" id="fibInput" placeholder="Number of terms">
+          <button class="action-btn" onclick="generateFibonacci()">Generate</button>
+          <div class="result" id="fibResult"></div>
+        </div>
+        <div class="right">💡 Keep learning, keep growing!</div>
+      </div>
+
+      <!-- Task 4 -->
+      <div class="task-flex">
+        <div class="left">
+          <h3>4️⃣ Sum Multiples of 3 & 5 &lt; 1000</h3>
+          <button class="action-btn" onclick="sumMultiples()">Calculate</button>
+          <div class="result" id="sumResult"></div>
+        </div>
+        <div class="right">💡 Problem solving sharpens mind!</div>
+      </div>
+
+      <!-- Task 5 -->
+      <div class="task-flex">
+        <div class="left">
+          <h3>5️⃣ Cube of Number (Function Object)</h3>
+          <input class="user-input" type="number" id="cubeInput" placeholder="Enter number">
+          <button class="action-btn" onclick="getCube()">Get Cube</button>
+          <div class="result" id="cubeResult"></div>
+        </div>
+        <div class="right">💡 Math is fun!</div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      body.dataset.theme = body.dataset.theme === 'light' ? 'dark' : 'light';
+    }
+
+    function filterNegatives() {
+      const input = document.getElementById('filterInput').value;
+      const arr = input.split(',').map(Number);
+      const filtered = arr.filter(n => n >= 0);
+      document.getElementById('filterResult').innerText = `✅ Non-negative numbers: [${filtered.join(', ')}]`;
+    }
+
+    function diffWith13() {
+      const num = parseFloat(document.getElementById('diffInput').value);
+      let result;
+      if (num > 13) {
+        result = 2 * Math.abs(num - 13);
+      } else {
+        result = Math.abs(num - 13);
+      }
+      document.getElementById('diffResult').innerText = `✅ Result: ${result}`;
+    }
+
+    function generateFibonacci() {
+      const n = parseInt(document.getElementById('fibInput').value);
+      if (n <= 0) {
+        document.getElementById('fibResult').innerText = "❌ Please enter a positive number.";
+        return;
+      }
+      const fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      document.getElementById('fibResult').innerText = `✅ First ${n} terms: [${fib.slice(0, n).join(', ')}]`;
+    }
+
+    function sumMultiples() {
+      let sum = 0;
+      for (let i = 0; i < 1000; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+          sum += i;
+        }
+      }
+      document.getElementById('sumResult').innerText = `✅ Sum of multiples of 3 and 5 below 1000: ${sum}`;
+    }
+
+    function getCube() {
+      const num = parseFloat(document.getElementById('cubeInput').value);
+      const cubeFunc = new Function('n', 'return n * n * n;');
+      const result = cubeFunc(num);
+      document.getElementById('cubeResult').innerText = `✅ Cube of ${num}: ${result}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SQL: Alter Table and Insert Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      background-color: #2196F3;
+      color: white;
+      padding: 20px;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+    section {
+      background-color: white;
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2196F3;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>✨ SQL: Alter Table and Insert Data ✨</header>
+
+  <section>
+    <h2>1️⃣ Add "no_of_pages" Column to "book_records"</h2>
+    <pre>
+ALTER TABLE book_records
+ADD COLUMN no_of_pages INT;
+    </pre>
+  </section>
+
+  <section>
+    <h2>2️⃣ Add Primary Key to Unique Column</h2>
+    <pre>
+ALTER TABLE book_records
+ADD PRIMARY KEY (Book_Library_No);
+    </pre>
+  </section>
+
+  <section>
+    <h2>3️⃣ Insert Data into "book_records" Table</h2>
+    <pre>
+INSERT INTO book_records
+(Book_Library_No, Book_Name, Author_Name, Book_Edition, Price, no_of_pages)
+VALUES
+(1, 'Introduction to SQL', 'Rahul Sharma', 'First', 499.99, 350);
+    </pre>
+  </section>
+
+</body>
+</html>

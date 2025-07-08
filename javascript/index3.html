@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interactive JavaScript Webpage with Arrays & Dark Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6200ea;
+      --secondary: #03dac6;
+      --accent: #f107a3;
+      --background: #f5f5f5;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --shadow: rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --background: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --shadow: rgba(255,255,255,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--background);
+      color: var(--text-color);
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-family: 'Pacifico', cursive;
+      position: relative;
+    }
+
+    header button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    header button:hover {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      display: grid;
+      gap: 20px;
+      padding: 0 15px;
+    }
+
+    section {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px var(--shadow);
+      transition: transform 0.3s, background-color 0.4s, color 0.4s;
+      text-align: center;
+    }
+
+    section:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    button.action-btn {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    button.action-btn:hover {
+      background-color: var(--secondary);
+      color: #000;
+    }
+
+    .result {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: var(--background);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      transition: background-color 0.4s;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.02);
+    }
+
+    @media (min-width: 700px) {
+      main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+  <header>
+    ✨ Interactive JavaScript Playground
+    <button onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
+  </header>
+
+  <main>
+    <!-- Array Section -->
+    <section>
+      <h2>🔢 JavaScript Arrays</h2>
+      <div>
+        <button class="action-btn" onclick="sortArray()">Sort Array</button>
+        <button class="action-btn" onclick="concatArrays()">Concatenate Arrays</button>
+        <button class="action-btn" onclick="removeFirstElement()">Remove First Element</button>
+      </div>
+      <div class="result" id="arrayResult">Click a button to see the result here!</div>
+    </section>
+
+    <!-- Image Section with Swap -->
+    <section>
+      <h2>🖼️ Swap Vibrant Images</h2>
+      <div class="image-container">
+        <img id="myImage" src="mangalyaan.jpg" alt="Landscape">
+        <div>
+          <button class="action-btn" onclick="changeImage()">Change Image</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fancy Text Control -->
+    <section>
+      <h2>🔠 Fancy Font Size Control</h2>
+      <div id="text" class="result">This text's size can change smoothly!</div>
+      <div>
+        <button class="action-btn" onclick="increaseFont()">Increase</button>
+        <button class="action-btn" onclick="decreaseFont()">Decrease</button>
+      </div>
+    </section>
+
+    <!-- Date & Time -->
+    <section>
+      <h2>⏰ Show Current Date & Time</h2>
+      <div id="dateTime" class="result">Press the button to see current date and time.</div>
+      <div>
+        <button class="action-btn" onclick="showDateTime()">Show Date & Time</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Dark mode toggle
+    function toggleDarkMode() {
+      const body = document.body;
+      body.dataset.theme = body.dataset.theme === 'light' ? 'dark' : 'light';
+    }
+
+    // Fancy text font size control
+    let fontSize = 16;
+    function increaseFont() {
+      fontSize += 2;
+      document.getElementById('text').style.fontSize = fontSize + 'px';
+    }
+    function decreaseFont() {
+      fontSize -= 2;
+      if (fontSize < 10) fontSize = 10;
+      document.getElementById('text').style.fontSize = fontSize + 'px';
+    }
+
+    // Show current date and time
+    function showDateTime() {
+      const now = new Date();
+      document.getElementById('dateTime').innerText = `🗓️ ${now.toLocaleString()}`;
+    }
+
+    // Image swap
+    let imageToggle = true;
+    function changeImage() {
+      const img = document.getElementById('myImage');
+      if (imageToggle) {
+        img.src = 'ramji.jpeg';
+        img.alt = 'Ramji';
+      } else {
+        img.src = 'vishnuji.jpeg';
+        img.alt = 'Landscape of vishnu ji';
+      }
+      imageToggle = !imageToggle;
+    }
+
+    // Arrays section
+    function sortArray() {
+      const arr = [5, 2, 9, 1, 7];
+      const sorted = arr.slice().sort((a, b) => a - b);
+      document.getElementById('arrayResult').innerHTML = `🔢 Original: [${arr}]<br>✅ Sorted: [${sorted}]`;
+    }
+
+    function concatArrays() {
+      const arr1 = ['apple', 'banana'];
+      const arr2 = ['orange', 'grape'];
+      const combined = arr1.concat(arr2);
+      document.getElementById('arrayResult').innerHTML = `🍎 Array 1: [${arr1}]<br>🍇 Array 2: [${arr2}]<br>✅ Concatenated: [${combined}]`;
+    }
+
+    function removeFirstElement() {
+      const arr = ['red', 'green', 'blue', 'yellow'];
+      const removed = arr.shift();
+      document.getElementById('arrayResult').innerHTML = `🎨 Original: ['red', 'green', 'blue', 'yellow']<br>❌ Removed: ${removed}<br>✅ Result: [${arr}]`;
+    }
+  </script>
+</body>
+</html>

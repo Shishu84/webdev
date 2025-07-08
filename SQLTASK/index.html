@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SQL: Creating Database and Table Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+    section {
+      background-color: white;
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #4CAF50;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>✨ SQL: Creating Database and Table ✨</header>
+
+  <section>
+    <h2>1️⃣ Create a Database named "library"</h2>
+    <pre>
+CREATE DATABASE library;
+    </pre>
+  </section>
+
+  <section>
+    <h2>2️⃣ Delete the "library" Database</h2>
+    <pre>
+DROP DATABASE library;
+    </pre>
+  </section>
+
+  <section>
+    <h2>3️⃣ Create a Table "book_records" with Columns</h2>
+    <pre>
+CREATE TABLE book_records (
+    Book_Library_No INT PRIMARY KEY,
+    Book_Name VARCHAR(100),
+    Author_Name VARCHAR(100),
+    Book_Edition VARCHAR(50),
+    Price DECIMAL(10, 2)
+);
+    </pre>
+  </section>
+
+  <section>
+    <h2>4️⃣ Delete the "book_records" Table</h2>
+    <pre>
+DROP TABLE book_records;
+    </pre>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Basic Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    section {
+      background-color: #fff;
+      padding: 15px;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    input {
+      padding: 5px;
+      margin: 5px 0;
+    }
+    button {
+      padding: 5px 10px;
+      margin-top: 5px;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #eef;
+      border-radius: 4px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript: Basic Tasks</h1>
+
+  <section>
+    <h2>1. Print Name & Address</h2>
+    <button onclick="printNameAddress()">Show Info</button>
+    <div class="result" id="infoResult"></div>
+  </section>
+
+  <section>
+    <h2>2. Check Value & Type Equality</h2>
+    <input type="text" id="val1" placeholder="First value">
+    <input type="text" id="val2" placeholder="Second value">
+    <button onclick="checkEquality()">Check</button>
+    <div class="result" id="equalityResult"></div>
+  </section>
+
+  <section>
+    <h2>3. Add Two Strings in Uppercase</h2>
+    <input type="text" id="str1" placeholder="First string">
+    <input type="text" id="str2" placeholder="Second string">
+    <button onclick="addUpperStrings()">Combine</button>
+    <div class="result" id="stringResult"></div>
+  </section>
+
+  <section>
+    <h2>4. String Length in Bytes</h2>
+    <input type="text" id="byteInput" placeholder="Enter string">
+    <button onclick="stringBytes()">Get Bytes</button>
+    <div class="result" id="byteResult"></div>
+  </section>
+
+  <section>
+    <h2>5. Round Number to Digits</h2>
+    <input type="number" id="numInput" placeholder="Number">
+    <input type="number" id="digitInput" placeholder="Decimal places">
+    <button onclick="roundNumber()">Round</button>
+    <div class="result" id="roundResult"></div>
+  </section>
+
+  <script>
+    function printNameAddress() {
+      const name = "Rahul Kumar";
+      const address = "Gandhi Maidan, Patna, Bihar";
+      document.getElementById('infoResult').innerText = `Name: ${name}\nAddress: ${address}`;
+    }
+
+    function checkEquality() {
+      const val1 = document.getElementById('val1').value;
+      const val2 = document.getElementById('val2').value;
+
+      let parsed1, parsed2;
+      try {
+        parsed1 = JSON.parse(val1);
+      } catch { parsed1 = val1; }
+
+      try {
+        parsed2 = JSON.parse(val2);
+      } catch { parsed2 = val2; }
+
+      const isEqual = parsed1 === parsed2 && typeof parsed1 === typeof parsed2;
+      document.getElementById('equalityResult').innerText = isEqual 
+        ? "✅ Values and types are the SAME."
+        : "❌ Values or types are DIFFERENT.";
+    }
+
+    function addUpperStrings() {
+      const s1 = document.getElementById('str1').value;
+      const s2 = document.getElementById('str2').value;
+      const combined = (s1 + s2).toUpperCase();
+      document.getElementById('stringResult').innerText = `Result: ${combined}`;
+    }
+
+    function stringBytes() {
+      const str = document.getElementById('byteInput').value;
+      const encoder = new TextEncoder();
+      const bytes = encoder.encode(str).length;
+      document.getElementById('byteResult').innerText = `String length in bytes: ${bytes}`;
+    }
+
+    function roundNumber() {
+      const num = parseFloat(document.getElementById('numInput').value);
+      const digits = parseInt(document.getElementById('digitInput').value);
+      if (isNaN(num) || isNaN(digits)) {
+        document.getElementById('roundResult').innerText = "Please enter valid numbers.";
+        return;
+      }
+      const rounded = num.toFixed(digits);
+      document.getElementById('roundResult').innerText = `Rounded: ${rounded}`;
+    }
+  </script>
+
+</body>
+</html>
